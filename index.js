@@ -18,17 +18,16 @@ app.get('/', function (req, res) {
 
 // Route to handle file upload and send the response
 app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
+  console.log("FILE:", req.file);
+
   if (!req.file) {
-    return res.status(400).json({ error: 'No file uploaded' });
+    return res.json({ error: "No file uploaded" });
   }
 
-  const file = req.file;
-
-  // Respond with the file's information
-  res.json({
-    name: file.originalname,
-    type: file.mimetype,
-    size: file.size,
+  return res.json({
+    name: req.file.originalname,
+    type: req.file.mimetype,
+    size: req.file.size
   });
 });
 
