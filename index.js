@@ -24,9 +24,9 @@ app.post('/api/fileanalyse', function (req, res, next) {
     }
 
     return res.status(200).json({
-      name: req.file.originalname,
-      type: req.file.mimetype,
-      size: req.file.size
+      "name": req.file.originalname,
+      "file": req.file.mimetype,
+      "size": req.file.size
     });
   });
 });
